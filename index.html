@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Travel Planner — AI Powered</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── HERO HEADER ──────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <nav class="nav">
+      <div class="nav-brand">
+        <span class="brand-icon">✈</span>
+        <span class="brand-text">TravelAI</span>
+        <span class="brand-badge">Powered by IBM watsonx</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#planner">Plan Trip</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <div class="hero-tag">🤖 AI-Powered Travel Intelligence</div>
+      <h1 class="hero-title">
+        Plan Your<br />
+        <span class="gradient-text">Perfect Journey</span>
+      </h1>
+      <p class="hero-subtitle">
+        Harness IBM watsonx.ai · Llama 3.3 70B · Random Forest ML · ChromaDB RAG<br />
+        for the smartest travel plans you've ever experienced.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">6</span><span class="stat-label">Destinations</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">AI</span><span class="stat-label">Itinerary</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">ML</span><span class="stat-label">Cost Predict</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">RAG</span><span class="stat-label">Knowledge</span></div>
+      </div>
+      <a href="#planner" class="hero-cta">
+        Start Planning <span>→</span>
+      </a>
+    </div>
+    <div class="hero-scroll">Scroll to Plan</div>
+  </header>
+
+  <!-- ── DESTINATIONS SHOWCASE ─────────────────────────────────────────── -->
+  <section id="destinations" class="destinations-section">
+    <div class="section-header">
+      <div class="section-tag">📍 Explore India</div>
+      <h2>Featured Destinations</h2>
+      <p>Six iconic Indian destinations with full AI travel intelligence</p>
+    </div>
+    <div class="destinations-grid" id="destGrid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ── TRAVEL PLANNER FORM ────────────────────────────────────────────── -->
+  <section id="planner" class="planner-section">
+    <div class="section-header">
+      <div class="section-tag">🧠 AI Travel Planner</div>
+      <h2>Plan Your Trip</h2>
+      <p>Fill in the details — our AI agents handle everything else</p>
+    </div>
+
+    <div class="planner-container">
+      <form id="travelForm" class="travel-form">
+
+        <!-- Row 1: Source / Destination -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="source">
+              <span class="label-icon">🏠</span> Source City
+            </label>
+            <input type="text" id="source" name="source" placeholder="e.g. Mumbai, Delhi, Bangalore" required />
+          </div>
+          <div class="form-group">
+            <label for="destination">
+              <span class="label-icon">📍</span> Destination
+            </label>
+            <select id="destination" name="destination" required>
+              <option value="">Select Destination</option>
+              <option value="Goa">🏖️ Goa — Beach Paradise</option>
+              <option value="Jaipur">🏯 Jaipur — Pink City</option>
+              <option value="Kerala">🌿 Kerala — God's Own Country</option>
+              <option value="Shimla">🏔️ Shimla — Queen of Hill Stations</option>
+              <option value="Andaman">🐠 Andaman — Tropical Paradise</option>
+              <option value="Ladakh">⛰️ Ladakh — Land of High Passes</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2: Budget / Days / Travelers -->
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label for="budget">
+              <span class="label-icon">💰</span> Total Budget (₹)
+            </label>
+            <div class="input-with-prefix">
+              <span class="input-prefix">₹</span>
+              <input type="number" id="budget" name="budget" placeholder="25000" min="5000" max="500000" required />
+            </div>
+            <div class="budget-indicator" id="budgetIndicator"></div>
+          </div>
+          <div class="form-group">
+            <label for="days">
+              <span class="label-icon">📅</span> Duration (Days)
+            </label>
+            <div class="stepper">
+              <button type="button" class="stepper-btn" onclick="adjustStepper('days', -1)">−</button>
+              <input type="number" id="days" name="days" value="5" min="1" max="30" required />
+              <button type="button" class="stepper-btn" onclick="adjustStepper('days', 1)">+</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="travelers">
+              <span class="label-icon">👥</span> Travelers
+            </label>
+            <div class="stepper">
+              <button type="button" class="stepper-btn" onclick="adjustStepper('travelers', -1)">−</button>
+              <input type="number" id="travelers" name="travelers" value="2" min="1" max="20" required />
+              <button type="button" class="stepper-btn" onclick="adjustStepper('travelers', 1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Transport / Hotel -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><span class="label-icon">🚀</span> Transport Type</label>
+            <div class="option-cards" id="transportCards">
+              <div class="option-card active" data-value="flight" onclick="selectOption('transport', this)">
+                <span class="opt-icon">✈️</span>
+                <span class="opt-label">Flight</span>
+              </div>
+              <div class="option-card" data-value="train" onclick="selectOption('transport', this)">
+                <span class="opt-icon">🚂</span>
+                <span class="opt-label">Train</span>
+              </div>
+              <div class="option-card" data-value="bus" onclick="selectOption('transport', this)">
+                <span class="opt-icon">🚌</span>
+                <span class="opt-label">Bus</span>
+              </div>
+            </div>
+            <input type="hidden" id="transport_type" name="transport_type" value="flight" />
+          </div>
+          <div class="form-group">
+            <label><span class="label-icon">🏨</span> Hotel Type</label>
+            <div class="option-cards" id="hotelCards">
+              <div class="option-card" data-value="budget" onclick="selectOption('hotel', this)">
+                <span class="opt-icon">🛏️</span>
+                <span class="opt-label">Budget</span>
+              </div>
+              <div class="option-card active" data-value="standard" onclick="selectOption('hotel', this)">
+                <span class="opt-icon">🏩</span>
+                <span class="opt-label">Standard</span>
+              </div>
+              <div class="option-card" data-value="luxury" onclick="selectOption('hotel', this)">
+                <span class="opt-icon">🏰</span>
+                <span class="opt-label">Luxury</span>
+              </div>
+            </div>
+            <input type="hidden" id="hotel_type" name="hotel_type" value="standard" />
+          </div>
+        </div>
+
+        <!-- Row 4: Interests -->
+        <div class="form-group form-group-full">
+          <label><span class="label-icon">❤️</span> Your Interests</label>
+          <div class="interests-grid" id="interestsGrid">
+            <button type="button" class="interest-tag" data-value="beaches" onclick="toggleInterest(this)">🏖️ Beaches</button>
+            <button type="button" class="interest-tag" data-value="history" onclick="toggleInterest(this)">🏛️ History</button>
+            <button type="button" class="interest-tag" data-value="food" onclick="toggleInterest(this)">🍜 Food</button>
+            <button type="button" class="interest-tag" data-value="adventure" onclick="toggleInterest(this)">🧗 Adventure</button>
+            <button type="button" class="interest-tag" data-value="nightlife" onclick="toggleInterest(this)">🎉 Nightlife</button>
+            <button type="button" class="interest-tag" data-value="nature" onclick="toggleInterest(this)">🌿 Nature</button>
+            <button type="button" class="interest-tag" data-value="shopping" onclick="toggleInterest(this)">🛍️ Shopping</button>
+            <button type="button" class="interest-tag" data-value="wellness" onclick="toggleInterest(this)">🧘 Wellness</button>
+            <button type="button" class="interest-tag" data-value="wildlife" onclick="toggleInterest(this)">🦁 Wildlife</button>
+            <button type="button" class="interest-tag" data-value="culture" onclick="toggleInterest(this)">🎭 Culture</button>
+            <button type="button" class="interest-tag" data-value="photography" onclick="toggleInterest(this)">📸 Photography</button>
+            <button type="button" class="interest-tag" data-value="trekking" onclick="toggleInterest(this)">🥾 Trekking</button>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-submit-area">
+          <div class="ai-pipeline-preview">
+            <span class="pipe-step">🧠 Destination AI</span>
+            <span class="pipe-arrow">→</span>
+            <span class="pipe-step">🌤️ Weather</span>
+            <span class="pipe-arrow">→</span>
+            <span class="pipe-step">💰 Cost ML</span>
+            <span class="pipe-arrow">→</span>
+            <span class="pipe-step">📚 RAG</span>
+            <span class="pipe-arrow">→</span>
+            <span class="pipe-step">🤖 Llama 3.3</span>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Generate AI Travel Plan</span>
+            <span class="btn-icon">✈</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ── LOADING STATE ──────────────────────────────────────────────────── -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-card">
+      <div class="loading-spinner"></div>
+      <h3 class="loading-title">AI Agents Working...</h3>
+      <div class="loading-steps" id="loadingSteps">
+        <div class="load-step" id="step1">🧠 Analysing destination preferences...</div>
+        <div class="load-step" id="step2">🌤️ Fetching live weather data...</div>
+        <div class="load-step" id="step3">💰 Running ML cost prediction...</div>
+        <div class="load-step" id="step4">📚 Querying knowledge base (RAG)...</div>
+        <div class="load-step" id="step5">🤖 IBM Llama 3.3 generating itinerary...</div>
+        <div class="load-step" id="step6">✅ Assembling your travel plan...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESULTS DASHBOARD ──────────────────────────────────────────────── -->
+  <section id="dashboard" class="dashboard-section hidden">
+    <div class="section-header">
+      <div class="section-tag">📊 Your AI Travel Dashboard</div>
+      <h2 id="dashboardTitle">Your Perfect Trip</h2>
+      <p id="dashboardSubtitle">AI-generated plan powered by IBM watsonx.ai</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <div class="summary-card card-destination">
+        <div class="card-icon">📍</div>
+        <div class="card-body">
+          <div class="card-label">Destination</div>
+          <div class="card-value" id="sumDestination">—</div>
+        </div>
+      </div>
+      <div class="summary-card card-cost">
+        <div class="card-icon">💰</div>
+        <div class="card-body">
+          <div class="card-label">Predicted Cost</div>
+          <div class="card-value" id="sumCost">—</div>
+          <div class="card-sub" id="sumCostPer">— per person</div>
+        </div>
+      </div>
+      <div class="summary-card card-weather">
+        <div class="card-icon" id="weatherIcon">🌤️</div>
+        <div class="card-body">
+          <div class="card-label">Current Weather</div>
+          <div class="card-value" id="sumTemp">—</div>
+          <div class="card-sub" id="sumWeatherDesc">—</div>
+        </div>
+      </div>
+      <div class="summary-card card-days">
+        <div class="card-icon">📅</div>
+        <div class="card-body">
+          <div class="card-label">Duration</div>
+          <div class="card-value" id="sumDays">—</div>
+          <div class="card-sub" id="sumTravelers">— travelers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Tabs -->
+    <div class="dashboard-tabs">
+      <button class="tab-btn active" onclick="switchTab('itinerary', this)">🗺️ Itinerary</button>
+      <button class="tab-btn" onclick="switchTab('weather', this)">🌤️ Weather</button>
+      <button class="tab-btn" onclick="switchTab('cost', this)">💰 Cost</button>
+      <button class="tab-btn" onclick="switchTab('destination', this)">📍 Destination</button>
+    </div>
+
+    <!-- Itinerary Tab -->
+    <div id="tab-itinerary" class="tab-content active">
+      <div class="itinerary-card">
+        <div class="itinerary-header">
+          <h3>🤖 AI-Generated Itinerary</h3>
+          <div class="itinerary-meta">
+            <span class="meta-badge" id="modelBadge">IBM watsonx.ai</span>
+            <span class="meta-badge rag-badge">ChromaDB RAG</span>
+          </div>
+        </div>
+        <div class="itinerary-content" id="itineraryContent">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather Tab -->
+    <div id="tab-weather" class="tab-content hidden">
+      <div class="weather-dashboard">
+        <div class="weather-current-card">
+          <h3>Current Conditions</h3>
+          <div id="weatherCurrentContent">Loading...</div>
+        </div>
+        <div class="weather-forecast-card">
+          <h3>5-Day Forecast</h3>
+          <div id="weatherForecastContent">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cost Tab -->
+    <div id="tab-cost" class="tab-content hidden">
+      <div class="cost-dashboard">
+        <div class="cost-summary-card">
+          <h3>💰 Trip Cost Analysis</h3>
+          <div id="costSummaryContent">Loading...</div>
+        </div>
+        <div class="cost-breakdown-card">
+          <h3>📊 Cost Breakdown</h3>
+          <div id="costBreakdownContent">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Destination Tab -->
+    <div id="tab-destination" class="tab-content hidden">
+      <div id="destinationDetailContent">Loading...</div>
+    </div>
+
+    <!-- Actions -->
+    <div class="dashboard-actions">
+      <button class="action-btn btn-print" onclick="window.print()">🖨️ Print Plan</button>
+      <button class="action-btn btn-new" onclick="resetForm()">✈️ Plan New Trip</button>
+      <button class="action-btn btn-copy" onclick="copyItinerary()">📋 Copy Itinerary</button>
+    </div>
+
+  </section>
+
+  <!-- ── TECH STACK FOOTER ──────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="brand-icon">✈</span>
+        <span>Smart Travel Planner</span>
+      </div>
+      <div class="tech-stack-badges">
+        <span class="tech-badge">IBM watsonx.ai</span>
+        <span class="tech-badge">Llama 3.3 70B</span>
+        <span class="tech-badge">FastAPI</span>
+        <span class="tech-badge">ChromaDB</span>
+        <span class="tech-badge">Random Forest</span>
+        <span class="tech-badge">LangFlow</span>
+        <span class="tech-badge">OpenWeather</span>
+      </div>
+      <p class="footer-note">IBM Edunet Foundation Internship Project · AI/ML Track</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
