@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Travel Planner — AI Powered</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -345,26 +345,65 @@
 
   </section>
 
-  <!-- ── TECH STACK FOOTER ──────────────────────────────────────────────── -->
+  <!-- ── CREDIT & FOOTER ───────────────────────────────────────────────── -->
   <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <span class="brand-icon">✈</span>
-        <span>Smart Travel Planner</span>
+
+    <!-- Credit Card -->
+    <div class="credit-section">
+      <div class="credit-card">
+        <div class="credit-orb credit-orb-1"></div>
+        <div class="credit-orb credit-orb-2"></div>
+
+        <div class="credit-top">
+          <div class="credit-project-label">PROJECT</div>
+          <h2 class="credit-project-name">Smart Travel Planner Agent</h2>
+          <p class="credit-project-desc">Exploring the Power of Agentic AI with IBM watsonx.ai, LangFlow, RAG and Machine Learning</p>
+        </div>
+
+        <div class="credit-divider"></div>
+
+        <div class="credit-bottom">
+          <div class="credit-author-block">
+            <div class="credit-avatar">GK</div>
+            <div class="credit-author-info">
+              <div class="credit-built-by">Built by</div>
+              <div class="credit-author-name">Goldi Kumari</div>
+              <div class="credit-internship">
+                <span class="credit-dot"></span>
+                IBM Edunet Foundation Internship · AI/ML Track
+              </div>
+            </div>
+          </div>
+
+          <div class="credit-tech-stack">
+            <div class="credit-tech-label">Powered By</div>
+            <div class="credit-tech-pills">
+              <span class="credit-pill pill-ibm">🤖 IBM watsonx.ai</span>
+              <span class="credit-pill pill-llama">🦙 Llama 3.3 70B</span>
+              <span class="credit-pill pill-rag">📚 ChromaDB RAG</span>
+              <span class="credit-pill pill-ml">🌲 Random Forest ML</span>
+              <span class="credit-pill pill-lang">⚡ LangFlow</span>
+              <span class="credit-pill pill-flask">🐍 Flask</span>
+              <span class="credit-pill pill-weather">🌤️ OpenWeather</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tech-stack-badges">
-        <span class="tech-badge">IBM watsonx.ai</span>
-        <span class="tech-badge">Llama 3.3 70B</span>
-        <span class="tech-badge">FastAPI</span>
-        <span class="tech-badge">ChromaDB</span>
-        <span class="tech-badge">Random Forest</span>
-        <span class="tech-badge">LangFlow</span>
-        <span class="tech-badge">OpenWeather</span>
-      </div>
-      <p class="footer-note">IBM Edunet Foundation Internship Project · AI/ML Track</p>
     </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <div class="footer-brand">
+          <span class="brand-icon">✈</span>
+          <span>Smart Travel Planner Agent</span>
+        </div>
+        <p class="footer-copy">© 2025 Goldi Kumari · IBM Edunet Foundation · All rights reserved</p>
+      </div>
+    </div>
+
   </footer>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

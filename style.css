@@ -1340,3 +1340,228 @@ select option {
   .forecast-grid { grid-template-columns: repeat(2, 1fr); }
   .option-cards { flex-wrap: wrap; }
 }
+
+/* ── CREDIT SECTION ───────────────────────────────────────────────────── */
+.credit-section {
+  max-width: 1100px;
+  margin: 0 auto 0;
+  padding: 70px 40px 40px;
+}
+
+.credit-card {
+  position: relative;
+  background: linear-gradient(135deg, #0f1829 0%, #151d2e 60%, #0f1829 100%);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 28px;
+  padding: 52px 56px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(245,158,11,0.05),
+    0 40px 80px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.credit-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.credit-orb-1 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+  top: -80px; right: -60px;
+}
+
+.credit-orb-2 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(20,184,166,0.1) 0%, transparent 70%);
+  bottom: -40px; left: 60px;
+}
+
+.credit-top { position: relative; z-index: 2; margin-bottom: 36px; }
+
+.credit-project-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.credit-project-name {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #fff 30%, var(--amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.credit-project-desc {
+  font-size: 15px;
+  color: var(--gray-400);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.credit-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.25), transparent);
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 2;
+}
+
+.credit-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.credit-author-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.credit-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), #ff8c42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+  flex-shrink: 0;
+  box-shadow: 0 0 30px rgba(245,158,11,0.35);
+}
+
+.credit-built-by {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-600);
+  margin-bottom: 4px;
+}
+
+.credit-author-name {
+  font-family: var(--font-head);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.credit-internship {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--amber);
+  font-weight: 500;
+}
+
+.credit-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.credit-tech-stack { flex: 1; min-width: 280px; }
+
+.credit-tech-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-600);
+  margin-bottom: 14px;
+}
+
+.credit-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.credit-pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.credit-pill:hover { transform: translateY(-2px); }
+
+.pill-ibm    { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.3); color: var(--amber); }
+.pill-llama  { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.3); color: #a5b4fc; }
+.pill-rag    { background: rgba(20,184,166,0.12); border-color: rgba(20,184,166,0.3); color: var(--teal); }
+.pill-ml     { background: rgba(34,197,94,0.12);  border-color: rgba(34,197,94,0.3);  color: #86efac; }
+.pill-lang   { background: rgba(244,63,94,0.12);  border-color: rgba(244,63,94,0.3);  color: #fda4af; }
+.pill-flask  { background: rgba(148,163,184,0.1); border-color: rgba(148,163,184,0.2); color: var(--gray-400); }
+.pill-weather{ background: rgba(56,189,248,0.12); border-color: rgba(56,189,248,0.3); color: #7dd3fc; }
+
+/* Footer Bar */
+.footer-bar {
+  border-top: 1px solid var(--border);
+  padding: 20px 40px;
+  margin-top: 0;
+}
+
+.footer-bar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-400);
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--gray-600);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+  .credit-card { padding: 32px 24px; }
+  .credit-bottom { flex-direction: column; gap: 28px; }
+  .footer-bar-inner { justify-content: center; text-align: center; }
+}

@@ -9,7 +9,8 @@
 "use strict";
 
 // ── Configuration ─────────────────────────────────────────────────────────────
-const API_BASE = "http://localhost:8000/api";
+// Auto-detect API base: works whether served via Flask (same origin) or opened directly
+const API_BASE = window.location.origin + "/api";
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let selectedInterests = [];
@@ -218,7 +219,7 @@ function renderDashboard({ destination, days, travelers, budget, weather, cost, 
     dash.classList.remove("hidden");
     dash.scrollIntoView({ behavior: "smooth" });
   }
-  switchTab("itinerary", document.querySelector(".tab-btn.active"));
+  switchTab("itinerary", document.querySelector(".tab-btn[onclick*=\"itinerary\"]") || document.querySelector(".tab-btn"));
 }
 
 function renderItinerary(data) {
@@ -414,8 +415,11 @@ function showLoading(show) {
   const overlay = document.getElementById("loadingOverlay");
   if (!overlay) return;
   overlay.classList.toggle("hidden", !show);
-  const dash = document.getElementById("dashboard");
-  if (dash) dash.classList.add("hidden");
+  // Only hide dashboard when SHOWING loading (not when hiding it)
+  if (show) {
+    const dash = document.getElementById("dashboard");
+    if (dash) dash.classList.add("hidden");
+  }
 }
 
 function animateLoadingSteps() {

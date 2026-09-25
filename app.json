@@ -1,0 +1,46 @@
+{
+  "name": "smart-travel-planner",
+  "description": "AI-powered Smart Travel Planner using IBM watsonx.ai (Llama 3.3 70B), Random Forest ML, ChromaDB RAG, FastAPI, and OpenWeather API",
+  "version": "1.0.0",
+  "keywords": ["travel", "ai", "ibm-watsonx", "llama", "machine-learning", "fastapi", "chromadb", "rag"],
+  "repository": "https://github.com/your-username/smart-travel-planner",
+  "env": {
+    "IBM_API_KEY": {
+      "description": "IBM Cloud API Key for watsonx.ai authentication",
+      "required": true
+    },
+    "PROJECT_ID": {
+      "description": "IBM watsonx.ai Project ID",
+      "required": true
+    },
+    "IBM_REGION": {
+      "description": "IBM Cloud region (e.g. us-south, eu-de, au-syd)",
+      "value": "us-south",
+      "required": true
+    },
+    "OPENWEATHER_API_KEY": {
+      "description": "OpenWeather API key for live weather forecasts (optional — falls back to mock data)",
+      "required": false
+    },
+    "ENVIRONMENT": {
+      "description": "Runtime environment",
+      "value": "production",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "cd backend && python ml/train.py && python rag/knowledge_base.py"
+  },
+  "stack": "heroku-22"
+}

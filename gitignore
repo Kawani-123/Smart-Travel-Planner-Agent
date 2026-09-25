@@ -1,0 +1,48 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.whl
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# ML artifacts (large binary files)
+backend/ml/model.pkl
+backend/ml/encoders.pkl
+
+# ChromaDB persistence (regenerated on startup)
+backend/data/chroma_db/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Test artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Node (if any frontend tooling)
+node_modules/

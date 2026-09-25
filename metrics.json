@@ -1,0 +1,9 @@
+{
+  "mae": 4952.63,
+  "rmse": 7134.61,
+  "r2_score": 0.9483,
+  "cv_r2_mean": 0.8014,
+  "cv_r2_std": 0.1128,
+  "train_samples": 76,
+  "test_samples": 20
+}
